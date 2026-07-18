@@ -1,0 +1,107 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: theme(colors.gym-dark);
+    color: theme(colors.gym-white);
+  }
+
+  #root {
+    min-height: 100vh;
+    background-color: theme(colors.gym-dark);
+  }
+
+  /* Scrollbar personalizado estilo Tiffany */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: theme(colors.gym-dark-secondary);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: theme(colors.gym-neon);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
+  }
+
+  ::selection {
+    background: theme(colors.gym-neon);
+    color: theme(colors.gym-dark-secondary);
+  }
+}
+
+@layer components {
+  /* Botón Principal (Tiffany con texto Gris Oscuro) */
+  .btn-primary {
+    @apply relative bg-gym-neon text-gym-dark font-bold py-3 px-6 rounded-xl
+           transition-all duration-300 ease-out
+           hover:scale-105 hover:shadow-[0_0_30px_theme(colors.gym-neon-glow)]
+           active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  /* Botón Secundario */
+  .btn-secondary {
+    @apply bg-gym-dark-secondary text-gym-white font-medium py-3 px-6 rounded-xl
+           border border-gym-gray/20 transition-all duration-300
+           hover:bg-gym-card hover:border-gym-neon/40;
+  }
+
+  /* Tarjeta estándar con glow sutil en Tiffany al pasar el mouse */
+  .card {
+    @apply bg-gym-card rounded-2xl p-6
+           border border-gym-gray/10
+           transition-all duration-300
+           hover:border-gym-neon/20 hover:shadow-[0_0_40px_theme(colors.gym-neon-glow)];
+  }
+
+  /* Tarjeta con degradado oscuro de fondo */
+  .card-gradient {
+    @apply bg-gradient-to-br from-gym-card to-gym-dark-secondary
+           rounded-2xl p-6
+           border border-gym-gray/10
+           transition-all duration-300
+           hover:border-gym-neon/20;
+  }
+
+  /* Campos de texto e inputs */
+  .input-gym {
+    @apply w-full bg-gym-dark-secondary border border-gym-gray/20 rounded-xl
+           px-4 py-3 text-gym-white placeholder-gym-gray
+           transition-all duration-300
+           focus:outline-none focus:border-gym-neon focus:ring-2 focus:ring-gym-neon/20;
+  }
+
+  /* Badges y Etiquetas de Estado */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-neon {
+    @apply badge bg-gym-neon/10 text-gym-neon border border-gym-neon/20;
+  }
+
+  .badge-success {
+    @apply badge bg-gym-success/10 text-gym-success border border-gym-success/20;
+  }
+
+  .badge-danger {
+    @apply badge bg-gym-danger/10 text-gym-danger border border-gym-danger/20;
+  }
+}
